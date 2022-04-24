@@ -38,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       prefs.setString('token', token);
       prefs.setInt('user_id', userId);
 
-      Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const AccountScreen()));
     } catch (e) {
       log(e.toString());
     }

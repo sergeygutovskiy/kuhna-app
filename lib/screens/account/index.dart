@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:maks/components/service-card/index.dart';
 import 'package:maks/screens/account/edit/index.dart';
 import 'package:maks/screens/home/index.dart';
+import 'package:maks/screens/login/index.dart';
 import 'package:maks/screens/service/add/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,6 +24,13 @@ class _AccountScreenState extends State<AccountScreen> {
   User? user;
   List<Service> userServices = [];
   
+  void logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove('token');
+
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
+  }
+
   void getUser() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token');
@@ -155,6 +163,10 @@ class _AccountScreenState extends State<AccountScreen> {
                                   MaterialPageRoute(builder: (_) => EditAccountScreen(user: user!))
                                 ), 
                                 icon: Icon(Icons.edit, color: Theme.of(context).primaryColorDark)
+                              ),
+                              IconButton(
+                                onPressed: logout,
+                                icon: Icon(Icons.exit_to_app, color: Theme.of(context).primaryColorDark)
                               )
                             ],
                           )
