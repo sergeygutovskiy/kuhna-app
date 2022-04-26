@@ -7,7 +7,7 @@ class Service {
   final String desc;
   
   final String? avatarPath;
-  final String avatarPlaceholderPath = 'https://cdns.iconmonstr.com/wp-content/assets/preview/2019/240/iconmonstr-product-3.png';
+  final String avatarPlaceholderPath = 'https://dummyimage.com/300';
 
   get finalAvatarPath { return avatarPath ?? avatarPlaceholderPath; }
 
